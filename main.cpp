@@ -1,33 +1,42 @@
 #include <iostream>
 #include <vector>
+using std::string;
+
+struct Player{
+  string name;
+  int score;
+};
 
 int main(int argc, char *argv[])
 {
-  std::vector<std::string> names;
-  std::vector<int> scores;
+  vector<Player> Players;
 
   if( argc > 1 )
   {
     //Collect player names from command-line arguments
     for(int i=1; i<argc; i++)
     {
-      names.push_back(argv[i]);
+      Player x;
+      x.name = argv[i];
+      Players.push_back(x);
     }
 
     //Get player scores from user input
-    scores.resize(names.size());
-    for(int i=0; i<names.size(); i++)
+    scores.resize(Players.size());
+    for(int i=0; i<Players.size(); i++)
     {
-      std::cout<<"Score for "<<names[i]<<": ";
-      std::cin>>scores[i];
+      std::cout<<"Score for "<<Player[i].name<<": ";
+      int score;
+      std::cin>>score;
+      Player[i].score = score;
     }
 
     //Print summary
     std::cout<<"### SCOREBOARD ###\n";
     for(int i=0; i<names.size(); i++)
     {
-      std::cout<<names[i]<<"  ";
-      std::cout<<scores[i]<<std::endl;
+      std::cout<<Players[i].name<<"  ";
+      std::cout<<Players[i].score<<std::endl;
     }
   }
   else
@@ -39,3 +48,4 @@ int main(int argc, char *argv[])
 
   return 0;
 }
+
